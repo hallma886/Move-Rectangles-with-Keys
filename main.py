@@ -25,6 +25,8 @@ def handle_events():
 def draw_rect(screen, color, x, y, width, height):
     pygame.draw.rect(screen, color, (x, y, width, height))
 
+def draw_circle(screen, color, x, y, radius):
+    pygame.draw.circle(screen, color, (x, y), radius)
 
 
 def main():
@@ -45,6 +47,17 @@ def main():
     x2, y2 = 105, 425
     width2 = 350
     height2 = 225
+
+    # Circle 1
+    color3 = config.GREEN
+    x3, y3 = 205, 225
+    radius3 = 42
+
+    # Circle 2
+    color4 = config.PURPLE
+    x4, y4 = 155, 325
+    radius4 = 43
+    
 
     text_surface = font.render('HELLO', True, config.BLUE)
     text_surface2 = font.render('SUP', True, config.RED)
@@ -72,6 +85,9 @@ def main():
         draw_rect(screen, color1, x1, y1, width1, height1)
         draw_rect(screen, color2, x2, y2, width2, height2)
 
+        draw_circle(screen, color3, x3, y3, radius3)
+        draw_circle(screen, color4, x4, y4, radius4)
+
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT]: # Move left
             x1 -= value
@@ -91,6 +107,26 @@ def main():
             y2 -= value
         if key[pygame.K_s]: # Move down
             y2 += value
+
+        key = pygame.key.get_pressed()
+        if key[pygame.K_j]: # Move left
+            x3 -= value
+        if key[pygame.K_l]: # Move right
+            x3 += value
+        if key[pygame.K_i]: # Move up
+            y3 -= value
+        if key[pygame.K_k]: # Move down
+            y3 += value
+
+        key = pygame.key.get_pressed()
+        if key[pygame.K_c]: # Move left
+            x4 -= value
+        if key[pygame.K_b]: # Move right
+            x4 += value
+        if key[pygame.K_f]: # Move up
+            y4 -= value
+        if key[pygame.K_v]: # Move down
+            y4 += value
 
         screen.blit(text_surface, (text_x, text_y))
 
